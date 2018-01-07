@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid text-center">
+        <div class="row text-center pb-5">
+            <h3 class="text-center">Goals</h3>
+            <div class="col-md-3">
+                <span class="min-chart" id="weekly-streak" data-percent="32"><span class="percent"></span></span>
+                <h5><span class="label">BMI <i class="fa fa-arrow-circle-down"></i></span></h5>
+            </div>
+            <div class="col-md-3">
+                <span class="min-chart" id="workout-time" data-percent="56"><span class="percent"></span></span>
+                <h5><span class="label">Workout Time <i class="fa fa-arrow-circle-up"></i></span></h5>
+            </div>
+            <div class="col-md-3">
+                <span class="min-chart" id="weight-goal" data-percent="80"><span class="percent"></span></span>
+                <h5><span class="label">Weight <i class="fa fa-arrow-circle-down"></i></span></h5>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="text-center">Status</h3>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <canvas id="weight"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <canvas id="workoutTimeByBodyPart"></canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='mdb/css/compiled.min.css') }}">
+        <!--<link rel="stylesheet" href="{{ url_for('static', filename='mdb/css/mdb.css') }}">-->
+        <!--<link rel="stylesheet" href="{{ url_for('static', filename='mdb/css/bootstrap.css') }}">-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css"
+              integrity="sha256-KkbZmx6FZVSEtoV2osxWijO2la7keAhUtFPsV0IPkv8=" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='mdb/css/style.css') }}">
+
+    </head>
+  <body class="fixed-sn grey-skin">
+    <!--Double navigation-->
+    <header>
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav sn-bg-4 fixed mdb-sidenav">
+            <ul class="custom-scrollbar list-unstyled" style="max-height:100vh;">
+                <!-- Logo -->
+                <li>
+                    <div class=" waves-light align-middle text-center pt-3">
+                        <h1 class="align-middle text-justify text-center">FHD</h1>
+{#                        <a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>#}
+                    </div>
+                </li>
+                <!--/. Logo -->
+                <!--Social-->
+                <li>
+                    <ul class="social">
+                        <li><a href="#" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
+                        <li><a href="#" class="icons-sm pin-ic"><i class="fa fa-pinterest"> </i></a></li>
+                        <li><a href="#" class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
+                        <li><a href="#" class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a></li>
+                    </ul>
+                </li>
+                <!--/Social-->
+                <!--Search Form-->
+                <li>
+                    <form class="search-form" role="search">
+                        <div class="form-group waves-light">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </li>
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <li>
+                            <a class="waves-effect" href="/"><i class="fa fa-home"></i> Dashboard</i></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect" href="/"><i class="fa fa-line-chart"></i> Start Working Out</i></a>
+                        </li>
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-calendar"></i> Workouts<i class="fa fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="#" class="waves-effect">Find A Workout</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">Create A Workout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="waves-effect"><i class="fa fa-trophy"></i> Goals</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto">
+                <p>{% block breadcrumbs %}{% endblock %}</p>
+            </div>
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
+                </li>
+                {% if 'credentials' in session %}
+                    <li class="nav-item"><a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i> <span class="clearfix d-none d-sm-inline-block">Logout</span></a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="/authorize"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Login</span></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <!-- /.Navbar -->
+    </header>
+    <!--/.Double navigation-->
+        <!--Main layout-->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <!--/Main layout-->
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only">
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2017 - <script>document.write(new Date().getFullYear())</script> Copyright: <a href="https://michaelhenry.me"> Michael Henry </a>
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+    <script src="{{ url_for('static', filename='mdb/js/jquery-3.2.1.min.js') }}"></script>
+    <script>
+
+        // SideNav Initialization
+        $(".button-collapse").sideNav();
+
+        new WOW().init();
+
+    </script>
+    <script>
+         $(function() {
+            $('.submit-contact').on('click', function() {
+                var name = $('#form-contact-name').val();
+                if (name == '') {
+                        $('.failure-p').replaceWith('<p class="white-text mb-0 failure-p">Name is required</p>');
+                        $('.failure').css('display', '');
+                        return false;
+                    }
+                var email = $('#form-contact-email').val();
+                if (email == '') {
+                        $('.failure-p').replaceWith('<p class="white-text mb-0 failure-p">Email is required</p>');
+                        $('.failure').css('display', '');
+                        return false;
+                    }
+                var phone = $('#form-contact-phone').val();
+                var company = $('#form-contact-company').val();
+                var message = $('#form-contact-message').val();
+                if (message == '') {
+                        $('.failure-p').replaceWith('<p class="white-text mb-0 failure-p">A message is required</p>');
+                        $('.failure').css('display', '');
+                        return false;
+                    }
+                        $.ajax({
+                            url: '/send_email',
+                            data: $('#contact_me').serialize(),
+                            type: 'POST',
+                            success: function(response) {
+                                console.log(response);
+                                $('.failure').css('display', 'none');
+                                $('.success').css('display', '');
+                            },
+                            error: function(error) {
+                                if (error.status === 450){
+                                    console.log("Bot User's Not allowed.");
+                                    console.log("Unable to send email.", error.status, error.statusText);
+                                    $('.failure-p').replaceWith('<p class="white-text mb-0 failure-p">Be sure to verify you aren\'t a cyborg!</p>');
+                                    $('.failure').css('display', '');
+                                }
+                                console.log("Unable to send email.", error.status, error.statusText);
+                                $('.failure').css('display', '');
+                            }
+                        });
+            });
+         });
+         $(document).ready(function() {
+             $(document).click(function(e) {
+                 console.log(e.target)
+                 console.log(e.target)
+                if( $(e.target).is('span') ) {
+                    console.log("I should be closing.", e.target);
+                    $("#navbarSupportedContent").toggleClass("show");
+                 }
+            });
+         });
+    </script>
+    <script src="{{ url_for('static', filename='mdb/js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='mdb/js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='mdb/js/compiled.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+    <script>
+        wow = new WOW().init();
+    </script>
+  </body>
+</html>
